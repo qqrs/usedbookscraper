@@ -1,0 +1,5 @@
+usedbookscraper
+
+Python script to save on shipping for used books at half.com. Pulls reading list from goodreads.com and finds half.com sellers who have many books from the list. Sets the max price for the used book search by pulling the new book price from Amazon.
+
+Currently in a semi-working state and needs to be cleaned up. Amazon and Half api calls are fairly brittle.
