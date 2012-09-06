@@ -24,8 +24,10 @@ class Amazon:
     MAX_HTTP_RETRIES = 7
 
     def __init__(self, api_awskey="AWSKEY GOES HERE",
-                    api_secretkey="SECRET KEY GOES HERE"):
-        self.bn_amazon = bottlenose.Amazon(api_awskey, api_secretkey)
+                    api_secretkey="SECRET KEY GOES HERE",
+                    api_assockey="ASSOC KEY GOES HERE"):
+        self.bn_amazon = bottlenose.Amazon(api_awskey, api_secretkey, 
+                                                                api_assockey)
 
     def get_bookversion_list(self, book):
         for attempts in range(1,self.MAX_HTTP_RETRIES):

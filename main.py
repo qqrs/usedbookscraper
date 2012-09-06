@@ -1,16 +1,21 @@
 from data import *
+
+from apikeys import goodreads_key, goodreads_userid
+from apikeys import half_appname
+from apikeys import amazon_awskey, amazon_secretkey, amazon_assockey
+
 from api_goodreads import *
 from api_half import *
 from api_amazon import *
 
-gr = Goodreads()
-books = gr.getreadinglist()
+gr = Goodreads(goodreads_key)
+books = gr.getreadinglist(user=goodreads_userid)
 #books = gr.getreadinglist('5624110')
 #for b in books:
     #print '%13s %s' % (b.isbn, b.title)
 
 #
-half = Half()
+half = Half(half_appname)
 #b = Book('0425238091','title')
 #ed = Edition(b, 'title', '0425238091')
 #ed.isbn = '0425238091'
@@ -21,7 +26,7 @@ half = Half()
 
 
 #
-amazon = Amazon()
+amazon = Amazon(amazon_awskey, amazon_secretkey, amazon_assockey)
 #isbn = '9781416572503'
 #isbn = '0425238091'
 #b = Book(isbn,'title')
