@@ -3,6 +3,7 @@ from data import *
 import urllib2
 from lxml import objectify, etree
 import bottlenose
+import time
 
 # Returns first item in list
 def first(iterable, default=None):
@@ -49,8 +50,12 @@ class Amazon:
         root = objectify.fromstring(response)
         #print etree.tostring( root, pretty_print = True )
 
-        item = first(i for i in root.Items.Item if \
-                binding_isbook(i.ItemAttributes.Binding) == True  )
+        try:
+            item = first(i for i in root.Items.Item if \
+                    binding_isbook(i.ItemAttributes.Binding) == True  )
+        except AttributeError, error:
+            print str(error)
+            return None
 
         #editions = list()
         #e = Edition(book, item.ASIN.text, item.ItemAttributes.Title.text)
@@ -80,6 +85,8 @@ class Amazon:
                     IdType = "ASIN", 
                     ItemId = asin,
                     ResponseGroup = "ItemAttributes,OfferListings")
+                print book.title, asin
+                time.sleep(1)
                 break
             except urllib2.HTTPError, error:
                 print "HTTPError %d: retry %d" % (error.code, attempts)
@@ -114,7 +121,9 @@ class Amazon:
 
     def get_bookeditions(self, book):
         asins = self.get_bookversion_list(book)
-        assert len(asins) > 0
+        if (not asins or len(asins) == 0 ):
+            return None
+        #assert len(asins) > 0
 
         #first_version = None
         best = None

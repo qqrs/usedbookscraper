@@ -6,6 +6,8 @@ class Book:
         self.newprice = None    # new price sold by Amazon
         self.newversion = None
         self.editions = None
+    def __str__(self):
+        return self.title
 
 class Edition:
     def __init__(self, version):
@@ -43,4 +45,6 @@ class Seller:
         self.ratings = ratings
         self.feedback = feedback
         self.listings = list() 
+    def __str__(self):
+        return self.name
 
