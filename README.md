@@ -4,5 +4,6 @@ Python script to save on shipping for used books at half.com. Pulls reading list
 
 TODO:
 * More robust API calls for Half and Amazon
-* Find new source to look up alternate editions from an ISBN which doesn't throttle API requests to 1 per second
-* Build a Flask or Django or GAE interface for the script and put it on the web
+* Find new source to look up alternate editions for a book which doesn't throttle API requests to 1 per second
+* Build a Flask or Django or GAE web interface for the script
+* Put in on the web so other people can use it!
